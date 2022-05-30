@@ -20,10 +20,14 @@ public class BasePage {
 		PageFactory.initElements(driver, this);	
 	}
 	
-	protected void waitForElementToAppear(WebElement element) {
+	protected void waitForElementToBeDisplayed(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
+
+	protected boolean isElementDisplayed(WebElement element){
+		wait.until(ExpectedConditions.visibilityOf(element));
+		return element.isDisplayed();
+	}
 	protected void clickOnElement(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element)).click();
 	}

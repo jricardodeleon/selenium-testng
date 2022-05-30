@@ -50,6 +50,7 @@ public abstract class BaseTest {
 	
 	public void quitDriver() {
 		if(driver!=null) {
+			driver.close();
 			driver.quit();
 		}
 	}
