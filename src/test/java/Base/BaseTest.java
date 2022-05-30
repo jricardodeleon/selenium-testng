@@ -37,15 +37,16 @@ public abstract class BaseTest {
 		}
 	}
 
-	public void getHome(DriverType type){
-		browserType(type);
+	public void getHomePage(){
 		driver.get(Constants.webURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(LONGTIME, TimeUnit.SECONDS);
 	}
 	
-	public abstract void setupPages();
-	public abstract void startDriver();
+	public abstract void setupPage();
+
+	public abstract void initPages();
+	public abstract void createDriver();
 	public abstract void tearDown();
 	
 	public void quitDriver() {

@@ -15,13 +15,19 @@ public class LoginPageTest extends BaseTest implements LoginConstants{
 
 	@Override
 	@BeforeTest
-	public void startDriver() {
-		getHome(DriverType.CHROME);
+	public void createDriver() {
+		browserType(DriverType.CHROME);
 	}
-	
+
 	@Override
 	@BeforeMethod
-	public void setupPages() {
+	public void setupPage() {
+		getHomePage();
+	}
+
+	@Override
+	@BeforeMethod
+	public void initPages() {
 		loginPage = new LoginPage(driver);
 		productsPage = new ProductsPage(driver);
 	}
@@ -44,11 +50,21 @@ public class LoginPageTest extends BaseTest implements LoginConstants{
 		Assert.assertTrue(productsPage.isProductTitleDisplayed());
 	}
 
+	@Test
+	public void positiveUserIsAbleToLogin2() throws InterruptedException {
+		System.out.println("Positive Check Error");
+		loginPage.sentTextToUsernameField("standard_user");
+		loginPage.sentTextToPasswordField("secret_sauce");
+		loginPage.clickOnLoginBtn();
+		Assert.assertTrue(productsPage.isProductTitleDisplayed());
+	}
+
 	@AfterTest
 	@Override
 	public void tearDown() {
 		quitDriver();
 	}
+
 
 
 }
