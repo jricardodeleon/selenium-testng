@@ -14,13 +14,13 @@ public class LoginPageTest extends BaseTest implements LoginConstants{
 	ProductsPage productsPage;
 
 	@Override
-	@BeforeMethod
+	@BeforeTest
 	public void startDriver() {
 		getHome(DriverType.CHROME);
 	}
 	
 	@Override
-	@BeforeMethod()
+	@BeforeMethod
 	public void setupPages() {
 		loginPage = new LoginPage(driver);
 		productsPage = new ProductsPage(driver);
