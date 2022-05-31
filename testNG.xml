@@ -3,7 +3,7 @@
 <suite name="Testing Sauce Labs" parallel="methods" thread-count="2">
     <test name="Regression">
         <classes>
-            <class name="test.Login.LoginPageTest"/>
+            <class name="login.LoginTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

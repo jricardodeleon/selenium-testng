@@ -1,6 +1,6 @@
-package Utils.dataProvider;
+package Utils;
 
-import Utils.dataProvider.DataReader.DataFileReader;
+import Utils.dataReader.DataFileReader;
 
 public class Constants {
 

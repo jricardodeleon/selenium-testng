@@ -1,61 +1,44 @@
-package Base;
+package base;
 
+import Utils.Constants;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-import Driver.DriverType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import Utils.dataProvider.Constants;
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public abstract class BaseTest {
-	
-	protected WebDriver driver;
 
-	private static final int LONGTIME = 10;
+    protected WebDriver driver;
 
-	public BaseTest() {
-	}
-	
-	public void browserType(DriverType type) {
-		switch(type) {
-		case CHROME:
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			break;
-		case FIREFOX:
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			break;
-		default:
-			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
-			break;
-		}
-	}
+    private static final int LONGTIME = 10;
 
-	public void getHomePage(){
-		driver.get(Constants.webURL);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(LONGTIME, TimeUnit.SECONDS);
-	}
-	
-	public abstract void setupPage();
+    public BaseTest() {
+    }
 
-	public abstract void initPages();
-	public abstract void createDriver();
-	public abstract void tearDown();
-	
-	public void quitDriver() {
-		if(driver!=null) {
-			driver.close();
-			driver.quit();
-		}
-	}
-	
-	
+    @BeforeTest
+    public void createDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
 
+    @BeforeMethod
+    public void getHomePage(){
+        driver.get(Constants.webURL);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(LONGTIME, TimeUnit.SECONDS);
+    }
+
+    public abstract void initPages();
+
+    @AfterTest
+    public void quitDriver() {
+        if(driver!=null) {
+            driver.close();
+            driver.quit();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package Utils.dataProvider.DataReader;
+package Utils.dataReader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

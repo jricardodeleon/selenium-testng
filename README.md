@@ -9,7 +9,7 @@ The POM.xml contains all the libraries used in this framework.
 
 # Usage
 
-Base package, contains base class to create the driver and implements abstract methods and will be inherited on each test class.
+base package, contains base class to create the driver and implements abstract methods and will be inherited on each test class.
 
 pages package, contains base class that will be inherited on each page class.
 

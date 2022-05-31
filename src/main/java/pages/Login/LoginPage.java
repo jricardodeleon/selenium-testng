@@ -1,9 +1,9 @@
-package pages.Login;
+package pages.login;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.Base.BasePage;
+import pages.base.BasePage;
 
 public class LoginPage extends BasePage {
 
@@ -27,11 +27,11 @@ public class LoginPage extends BasePage {
 	}
 
 	public void sentTextToUsernameField(String username){
-		usernameField.sendKeys(username);
+		sendTextToField(usernameField, username);
 	}
 
 	public void sentTextToPasswordField(String password){
-		passwordField.sendKeys(password);
+		sendTextToField(passwordField, password);
 	}
 
 	public boolean isLoginVisible() {
